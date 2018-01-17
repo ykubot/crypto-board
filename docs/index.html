@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Decentralized Message Board on Ethereum">
+        <title>Crypto Board</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+
+    <body>
+        <!-- <nav class="" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="./index.html" class="brand-logo">Crypto Board</a>
+                <ul class="right hide-on-med-and-down">
+                <li><a href="./about.html">About</a></li>
+                </ul>
+        
+                <ul id="nav-mobile" class="side-nav">
+                <li><a href="./about.html">About</a></li>
+                </ul>
+                <a href="./index.html" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav> -->
+
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+                <br><br>
+                <h1 id="logo" class="header center">Crypto Board</h1>
+                <div class="row center">
+                    <h5 id="tagline" class="header col s12">Decentralized Message Board on Ethereum</h5>
+                </div>
+                <div class="row center">
+                    <h6 id="tagline-jp" class="header col s12">
+                        分散型プラットフォームイーサリアムを使った掲示板サービス
+                    </h6>
+                    <!-- <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a> -->
+                </div>
+                <br><br>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h3>Welcome to CryptoBoard !</h3>
+                <div class="">
+                    <ul>
+                        <li>分散型アプリケーションプラットフォームである<a href="https://ethereum.org/">イーサリアム(Ethereum)</a>を使った掲示板アプリです. </li>
+                        <li>投稿したメッセージは半永久的にブロックチェーン(イーサリアム)上に存在し続けます. </li>
+                        <li>ご利用には暗号通貨であるetherを少額と<a href="https://metamask.io/">Metamask</a>が必要になります. </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="divider"></div>
+
+            <div class="section">
+                <h3>Message Board</h3>
+                <div class="contents">
+                    <h5>Your Address Info</h5>
+                    <div class="address-area">
+                        <p id="myAddress"></p>
+                        <p id="myBalance"></p>
+                    </div>
+
+                    <div class="form-area">
+                        <h5>Send a message</h5>
+                        <div id="no-send-message"></div>
+                        <form>
+                            <label for="name" class="col-lg-2 control-label">Nick Name</label>
+                            <input id="name" type="text">
+                        </form>
+                        <form>
+                            <label for="message" class="col-lg-2 control-label">Message</label>
+                            <input id="message" type="text">
+                        </form>
+                    </div>
+                    <div class="button-loading-area">
+                        <button id="button" class="btn waves-effect blue-grey darken-4" type="submit" name="action">
+                            Send message
+                        </button>
+                        <div class="loading-area">
+                            <img id="loader" src="gif/Blocks.gif">
+                        </div>            
+                    </div>
+
+                    <h5>Recent message</h5>
+                    <div class="recent-message-area">
+                        <div class="message-area">
+                            <span id="post-user"></span>
+                            <span id="post-time"></span>
+                            <p id="post-message"></p>
+                        </div>
+                        <div class="block-hash-area">
+                            <span id="insTrans"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h5>Posted messages</h5>
+                <div class="posted-message-area">
+                    <div class="message-count-area">
+                        <span id="messageCount"></span>
+                    </div>
+                    <div class="message-list-area">
+                        <span id="messages"></span>
+                    </div>            
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Attention</h3>
+                <div class="contents">
+                    <ul>
+                        <li>本サービスの利用で発生するgasによる使用料は全てイーサリアム上で発生するものであり、本サービスでは一切手数料を頂いておりません. </li>
+                        <li>本サービスに起因して生じたいかなる不利益または損害について責任を負いかねますのでご了承下さい. </li>
+                        <li>本サイトで投稿されたデータはイーサリアム上で管理されるため、削除および更新などは不可となります. 個人情報など、個人が特定できる内容は避けるようお願い致します. </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h3>Donation</h3>
+                <div class="contents">
+                    <ul>
+                        <li>本プロジェクトはDApps(分散型アプリケーション)の実験的な取り組みです. </li>
+                        <li>この技術が少しでも認知され、普及に貢献出来るように活動を続けていきます. </li>
+                    </ul>
+                    <div class="ether-address-area">
+                        <p>Ethereum Address: 0x0998F93A043bbf1FE1832f898306AE62c4f92898</p>
+                        <div class="ether-qr-area">
+                            <img id="ether-qr" src="image/ether_address.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    Made by <a class="text-lighten-3" href="https://twitter.com/ykubot1">@ykubot1</a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/crypto-board.js"></script>
+        <script src="../node_modules/web3/dist/web3.min.js"></script>
+    </body>
+</html>

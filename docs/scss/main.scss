@@ -1,0 +1,232 @@
+@import "./mixins";
+@import "./vars";
+@import "./font";
+
+/* Common */
+html {
+    margin-bottom: 0;
+}
+
+body {
+    background-color:#E0E9E7;
+    // font-family: 'Raleway','Source Sans Pro', 'Arial';
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+nav {
+    background-color: #961C3C;
+}
+
+a {
+    word-break: break-all;
+}
+
+ul {
+    margin: 10px; 
+    li {
+        padding: 5px 0 5px 0;
+        color: #4C4A48;
+    }
+}
+
+.contents {
+    padding: 10px 0 10px 0;
+}
+
+nav .brand-logo {
+    color: #F8A723;
+    font-family: 'Baloo', cursive;
+    @include max-screen($breakpoint-mobile) {
+        left: 32%;
+        font-size: 20px;
+    }
+    @include screen($breakpoint-mobile, $breakpoint-tablet) {
+        left: 50%;
+        font-size: 20px;
+    }
+}
+
+nav ul a {
+    font-size: 1.2rem;
+}
+
+.section {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+label {
+    display:block;
+    margin-bottom:10px;
+}
+
+input {
+    padding:10px;
+    width: 80%;
+    margin-bottom: 1em;
+}
+
+button {
+    margin: 2em 0;
+    padding: 1em 4em;
+    display:block;
+    background-color: #242127;
+    color: #E0E9E7;
+}
+
+/* Header */
+#logo {
+    color: #F8A723;
+    font-family: 'Baloo', cursive;
+    @include max-screen($breakpoint-mobile) {
+        font-size: 35px;
+    }
+}
+
+#tagline {
+    color: #F8A723;
+    @include max-screen($breakpoint-mobile) {
+        font-size: 20px;
+    }
+}
+
+#tagline-jp {
+    color: #FFFFFF;
+    @include max-screen($breakpoint-mobile) {
+        padding: 0 30px 0 30px;
+    }
+}
+
+#index-banner {
+    background-color: #961C3C;
+} 
+
+/* User Info */
+.address-area {
+    padding: 5px;
+    border: dotted 1px #EB4455;
+    border-radius: 15px;
+    /* background-color:#fff; */
+    margin: 1em 0;
+}
+
+.address-area {
+    padding-left: 10px;
+}
+/* Form */
+.form-area {
+    padding: 20px 0 20px 0;
+}
+
+.form-area form {
+    padding: 5px 0 5px 0;
+}
+
+.button-loading-area {
+    display: -webkit-flex;
+    display: flex;
+    height: 100px;
+    -webkit-flex-direction: row; /* Safari */
+    flex-direction:         row;
+}
+
+.loading-area {
+    height: auto;
+    padding: 0 0 0 10px;
+}
+
+#loader {
+    width: 100px;
+    display:none;
+}
+
+/* Recent Message */
+.recent-message-area {
+    padding: 20px;
+    background-color: #FFFFFF;
+    /* border: solid 1px #55acee;
+    border-radius: 15px; */
+}
+
+.messages-area {
+    padding: 10px;
+}
+
+#post-user {
+    font-size: 18px;
+}
+
+#post-time {
+    font-size: 12px;
+    color: #68768A;
+    padding-left: 10px;
+}
+
+#post-message {
+    color: #242127;
+    font-size: 22px;
+}
+
+.block-hash-area {
+    color: #4C4A48;
+    font-size: 14px;
+}
+
+/* Posted Message */
+.posted-message-area {
+    padding: 10px;
+}
+
+.message-count-area {
+    color: #4C4A48;
+    font-size: 14px;
+}
+
+.message-list-area {
+    padding: 20px 0 20px 0;
+}
+
+.message-list {
+    padding: 10px;
+    border-bottom: solid 1px #F8A723;
+}
+
+/* Donation */
+.ether-address-area {
+    height: auto;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex-direction: column; /* Safari */
+    flex-direction:         column;
+}
+
+.ether-address-area p {
+    text-align: center;
+}
+
+.ether-qr-area {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+#ether-qr {
+    width: 100px;
+    height: 100px;
+}
+
+/* Footer */
+.page-footer {
+    padding-top: 0;
+    background-color: #961C3C;
+}
+
+.footer-copyright {
+    color: #FFFFFF;
+}
+
+.footer-copyright a {
+    color: #55acee;
+}
+
