@@ -284,11 +284,14 @@
         } else {
             web3 = new Web3(new Web3.providers.HttpProvider(PROVIDER_NETWORK));
         }
-        
-        web3.eth.defaultAccount = web3.eth.accounts[0];
 
-        if (!web3.eth.defaultAccount) {
-            $("#no-send-message").html('No connection to Main Ethereum Network.');
+        if (web3.isConnected()) {
+            web3.eth.defaultAccount = web3.eth.accounts[0];
+        } else {
+            console.log('ERR_CONNECTION_REFUSED');
+            $("#no-send-message").html('No connection to Main Ethereum Network.<br>Please unlock Metamask. ');
+            $(".address-area").css("display", "none");
+            $("#button").addClass('disabled');
         }
         
         $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
