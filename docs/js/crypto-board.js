@@ -287,16 +287,21 @@
 
         if (web3.isConnected()) {
             web3.eth.defaultAccount = web3.eth.accounts[0];
+
+            if (web3.eth.defaultAccount) {
+                $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
+                let ether_balance = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
+                $("#myBalance").html('Balance: ' + ether_balance + ' ether');
+            } else {
+                $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
+                $(".address-area").css("display", "none");
+                $("#button").addClass('disabled');
+            }
         } else {
-            console.log('ERR_CONNECTION_REFUSED');
-            $("#no-send-message").html('No connection to Main Ethereum Network.<br>Please unlock Metamask. ');
+            $("#no-send-message").html('No connection to Main Ethereum Network. ');
             $(".address-area").css("display", "none");
             $("#button").addClass('disabled');
         }
-        
-        $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
-        let ether_balance = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
-        $("#myBalance").html('Balance: ' + ether_balance + ' ether');
         
         let cryptoboardContract = web3.eth.contract(CONTRACT_ABI);
         // New contract
