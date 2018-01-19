@@ -14,6 +14,10 @@ nav {
 a {
   word-break: break-all; }
 
+@media screen and (max-width: 640px) {
+  h3 {
+    font-size: 28px; } }
+
 ul {
   margin: 10px; }
   ul li {
