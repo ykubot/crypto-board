@@ -283,7 +283,15 @@
 
             if (web3.eth.defaultAccount) {
                 $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
-                let ether_balance = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
+                // let ether_balance = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
+                web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
+                    if (!error) {
+                        console.log(result);
+                        let ether_balance = web3.fromWei(result).toNumber();
+                    } else {
+                        console.error(error);
+                    }
+                });
                 $("#myBalance").html('Balance: ' + ether_balance + ' ether');
             } else {
                 $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
