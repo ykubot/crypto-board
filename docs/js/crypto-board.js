@@ -288,11 +288,11 @@
                     if (!error) {
                         console.log(result);
                         let ether_balance = web3.fromWei(result).toNumber();
+                        $("#myBalance").html('Balance: ' + ether_balance + ' ether');
                     } else {
                         console.error(error);
                     }
                 });
-                $("#myBalance").html('Balance: ' + ether_balance + ' ether');
             } else {
                 $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
                 $(".address-area").css("display", "none");
