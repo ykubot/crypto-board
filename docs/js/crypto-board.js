@@ -3,8 +3,13 @@
   
         $('.button-collapse').sideNav();
 
-        const PROVIDER_NETWORK = "http://localhost:8545";
+        // const PROVIDER_NETWORK = "http://localhost:9545";
+
+        // Rinkeby
+        const PROVIDER_NETWORK = "https://www.rinkeby.io/";
         const ETHERSCAN_URL = "https://rinkeby.etherscan.io/tx/";
+
+        // Main net
         // const ETHERSCAN_URL = "https://etherscan.io/";
 
         const CONTRACT_ABI = [
@@ -56,10 +61,6 @@
                     {
                         "name": "",
                         "type": "uint256"
-                    },
-                    {
-                        "name": "",
-                        "type": "bool"
                     }
                 ],
                 "payable": false,
@@ -109,10 +110,6 @@
                     {
                         "name": "postTime",
                         "type": "uint256"
-                    },
-                    {
-                        "name": "isAvailable",
-                        "type": "bool"
                     }
                 ],
                 "payable": false,
@@ -213,11 +210,6 @@
                         "indexed": false,
                         "name": "postTime",
                         "type": "uint256"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "isAvailable",
-                        "type": "bool"
                     }
                 ],
                 "name": "MessageInfo",
@@ -277,7 +269,8 @@
                 "type": "function"
             }
         ];
-        const CONTRACT_ADDRESS = '0x26e0eac35332d9b0c03405cb4f9763ec9bc2fbce';
+                
+        const CONTRACT_ADDRESS = '0xb21b1416f324c7b07626b91d019febbd396678a0';
         
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
