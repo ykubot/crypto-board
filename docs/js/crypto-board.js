@@ -269,7 +269,10 @@
                 "type": "function"
             }
         ];
-                
+        
+        // localhost
+        // const CONTRACT_ADDRESS = '0x345ca3e014aaf5dca488057592ee47305d9b3e10';
+        // Rinkeby
         const CONTRACT_ADDRESS = '0xb21b1416f324c7b07626b91d019febbd396678a0';
         
         if (typeof web3 !== 'undefined') {
@@ -286,7 +289,7 @@
                 // let ether_balance = web3.fromWei(web3.eth.getBalance(web3.eth.accounts[0]).toNumber());
                 web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
                     if (!error) {
-                        console.log(result);
+                        // console.log(result);
                         let ether_balance = web3.fromWei(result).toNumber();
                         $("#myBalance").html('Balance: ' + ether_balance + ' ether');
                     } else {
@@ -350,15 +353,22 @@
                     if (parseInt(result.c) > 0) {
                         $("#messageCount").html(result.c + ' messages'); 
                         for (let i=0; i < parseInt(result.c[0]); i++) {
-                            let message_html = '<div class="message-list">';
-                            message_html += '<span id="post-user">' + Cryptoboard.messages(i)[1] + '</span>';
-                            message_html += '<span id="post-time">' + convertUnixtimeToDate(Cryptoboard.messages(i)[4].c[0]) + '</span>';
-                            message_html += '<p id="post-message">' + Cryptoboard.messages(i)[2] + '</p>';
-                            message_html += '</div>'
-                            messages_html = message_html + messages_html;
+                            Cryptoboard.getMessage(i, (err, res) => {
+                                if (!err) {
+                                    console.log(messages_html);
+                                    let message_html = '<div class="message-list">';
+                                    message_html += '<span id="post-user">' + res[1].toString() + '</span>';
+                                    message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
+                                    message_html += '<p id="post-message">' + res[2].toString() + '</p>';
+                                    message_html += '</div>'
+                                    messages_html = message_html + messages_html;
+                                    if (i === parseInt(result.c[0]) - 1) {
+                                        $("#messages").html(messages_html);
+                                    }
+                                }
+                            });
                         }
                         // console.log(messages_html);
-                        $("#messages").html(messages_html);
                     } else {
                         $("#messageCount").html('0 messages'); 
                         $("#messages").html("No message.");
@@ -371,7 +381,7 @@
         $("#button").click(function() {
             $("#loader").show();
         
-            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas:3000000}, (err, res) => {
+            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas:1000000}, (err, res) => {
                 // console.log(res);
                 
                 if (err) {
