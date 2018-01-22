@@ -324,10 +324,10 @@
         let Cryptoboard = cryptoboardContract.at(CONTRACT_ADDRESS);
         
         // メッセージ更新イベントを定義
-        let cryptoboardEvent = Cryptoboard.MessageInfo({}, 'latest');
+        // let cryptoboardEvent = Cryptoboard.MessageInfo({}, {toBlock: 'latest'});
         
         // メッセージ更新イベントを監視
-        cryptoboardEvent.watch(function (err, result) {
+        Cryptoboard.MessageInfo({}, {toBlock: 'latest'}).watch(function (err, result) {
             if (!err) {
                 if (result.blockHash != $("#insTrans").html()) 
                     $("#loader").hide();
@@ -355,7 +355,7 @@
                         for (let i=0; i < parseInt(result.c[0]); i++) {
                             Cryptoboard.getMessage(i, (err, res) => {
                                 if (!err) {
-                                    console.log(messages_html);
+                                    // console.log(messages_html);
                                     let message_html = '<div class="message-list">';
                                     message_html += '<span id="post-user">' + res[1].toString() + '</span>';
                                     message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
@@ -381,9 +381,8 @@
         $("#button").click(function() {
             $("#loader").show();
         
-            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas:1000000}, (err, res) => {
+            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas: 500000}, (err, res) => {
                 // console.log(res);
-                
                 if (err) {
                     // console.log(err);
                     $("#loader").hide();
