@@ -322,9 +322,13 @@
         // });
         
         let Cryptoboard = cryptoboardContract.at(CONTRACT_ADDRESS);
-                
+        console.log(Cryptoboard);
+
+        // メッセージ更新イベントを定義
+        let cryptoboardEvent = Cryptoboard.MessageInfo({}, 'latest');
+        
         // メッセージ更新イベントを監視
-        Cryptoboard.MessageInfo().watch((err, result) => {
+        cryptoboardEvent.watch((err, result) => {
             if (!err) {
                 if (result.blockHash != $("#insTrans").html()) 
                     $("#loader").hide();
