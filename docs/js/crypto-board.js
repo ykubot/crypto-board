@@ -382,12 +382,17 @@
         $("#button").click(function() {
             $("#loader").show();
         
-            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas: 500000}, (err, res) => {
-                // console.log(res);
+            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas: 210000}, (err, res) => {
+                console.log(res);
                 if (err) {
-                    // console.log(err);
+                    console.log(err);
                     $("#loader").hide();
                 }
+                let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + res + '">' + res + '</a>';
+                $("#insTrans").html(block_hash_html);
+                $("#post-user").html($("#name").val());
+                $("#post-message").html($("#message").val());
+                $("#loader").hide();
                 $("#name").val('');
                 $("#message").val('');
             });
