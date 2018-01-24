@@ -14,259 +14,259 @@
 
         const CONTRACT_ABI = [
             {
-                "constant": true,
-                "inputs": [
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "writerAccounts",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [
+                {
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "messages",
+              "outputs": [
+                {
+                  "name": "writerAddress",
+                  "type": "address"
+                },
+                {
+                  "name": "nickName",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "message",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "topic",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "postTime",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [
-                    {
-                        "name": "_index",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "getMessage",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    },
-                    {
-                        "name": "",
-                        "type": "string"
-                    },
-                    {
-                        "name": "",
-                        "type": "string"
-                    },
-                    {
-                        "name": "",
-                        "type": "bytes32"
-                    },
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [
+                {
+                  "name": "_index",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getWriterAccount",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [],
-                "name": "owner",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [],
+              "name": "getMessageCount",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "messages",
-                "outputs": [
-                    {
-                        "name": "writerAddress",
-                        "type": "address"
-                    },
-                    {
-                        "name": "nickName",
-                        "type": "string"
-                    },
-                    {
-                        "name": "message",
-                        "type": "string"
-                    },
-                    {
-                        "name": "topic",
-                        "type": "bytes32"
-                    },
-                    {
-                        "name": "postTime",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [
+                {
+                  "name": "_index",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getMessage",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "address"
+                },
+                {
+                  "name": "",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [],
-                "name": "getWriterCount",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [],
-                "name": "getMessageCount",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [],
+              "name": "getWriterCount",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [],
-                "name": "getWriterAccounts",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address[]"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": true,
+              "inputs": [
+                {
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "writerAccounts",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "constant": true,
-                "inputs": [
-                    {
-                        "name": "_index",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "getWriterAccount",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
+              "constant": false,
+              "inputs": [
+                {
+                  "name": "_nickName",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "_message",
+                  "type": "bytes32"
+                },
+                {
+                  "name": "_topic",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "postMessage",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
             },
             {
-                "inputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "constructor"
+              "constant": false,
+              "inputs": [
+                {
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "function"
             },
             {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": false,
-                        "name": "writerAddress",
-                        "type": "address"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "nickName",
-                        "type": "string"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "message",
-                        "type": "string"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "topic",
-                        "type": "bytes32"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "postTime",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "MessageInfo",
-                "type": "event"
+              "constant": true,
+              "inputs": [],
+              "name": "getWriterAccounts",
+              "outputs": [
+                {
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "payable": false,
+              "stateMutability": "view",
+              "type": "function"
             },
             {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": true,
-                        "name": "previousOwner",
-                        "type": "address"
-                    },
-                    {
-                        "indexed": true,
-                        "name": "newOwner",
-                        "type": "address"
-                    }
-                ],
-                "name": "OwnershipTransferred",
-                "type": "event"
+              "inputs": [],
+              "payable": false,
+              "stateMutability": "nonpayable",
+              "type": "constructor"
             },
             {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_nickName",
-                        "type": "string"
-                    },
-                    {
-                        "name": "_message",
-                        "type": "string"
-                    },
-                    {
-                        "name": "_topic",
-                        "type": "bytes32"
-                    }
-                ],
-                "name": "postMessage",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "name": "writerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "name": "nickName",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "name": "message",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "name": "topic",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "name": "postTime",
+                  "type": "uint256"
+                }
+              ],
+              "name": "MessageInfo",
+              "type": "event"
             },
             {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "newOwner",
-                        "type": "address"
-                    }
-                ],
-                "name": "transferOwnership",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
             }
         ];
         
@@ -330,16 +330,16 @@
         // メッセージ更新イベントを監視
         cryptoboardEvent.watch((err, result) => {
             if (!err) {
-                if (result.blockHash != $("#insTrans").html()) 
-                    $("#loader").hide();
+                // if (result.blockHash != $("#insTrans").html()) 
+                //     $("#loader").hide();
                     
-                console.log(result);
-                let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
-                $("#insTrans").html(block_hash_html);
-                // If byte32, use web3.toAscii
-                $("#post-user").html(result.args.nickName);
-                $("#post-time").html(convertUnixtimeToDate(result.args.postTime.c[0]));
-                $("#post-message").html(result.args.message);
+                // console.log(result);
+                // let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
+                // $("#insTrans").html(block_hash_html);
+                // // If byte32, use web3.toAscii
+                // $("#post-user").html(result.args.nickName);
+                // $("#post-time").html(convertUnixtimeToDate(result.args.postTime.c[0]));
+                // $("#post-message").html(result.args.message);
                 get_message_count();
             } else {
                 $("#loader").hide();
@@ -358,9 +358,9 @@
                                 if (!err) {
                                     // console.log(messages_html);
                                     let message_html = '<div class="message-list">';
-                                    message_html += '<span id="post-user">' + res[1].toString() + '</span>';
+                                    message_html += '<span id="post-user">' + web3.toAscii(res[1]).toString() + '</span>';
                                     message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
-                                    message_html += '<p id="post-message">' + res[2].toString() + '</p>';
+                                    message_html += '<p id="post-message">' + web3.toAscii(res[2]).toString() + '</p>';
                                     message_html += '</div>'
                                     messages_html = message_html + messages_html;
                                     if (i === parseInt(result.c[0]) - 1) {
@@ -395,6 +395,7 @@
                 $("#loader").hide();
                 $("#name").val('');
                 $("#message").val('');
+                $(".posted-message-area").css("display", "block");
             });
         });
         

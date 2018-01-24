@@ -124,6 +124,9 @@ button {
   display: none; }
 
 /* Recent Message */
+.posted-message-area {
+  display: none; }
+
 .recent-message-area {
   padding: 20px;
   background-color: #FFFFFF;
@@ -149,8 +152,8 @@ button {
   color: #4C4A48;
   font-size: 14px; }
 
-/* Posted Message */
-.posted-message-area {
+/* Timeline */
+.timeline-area {
   padding: 10px; }
 
 .message-count-area {
