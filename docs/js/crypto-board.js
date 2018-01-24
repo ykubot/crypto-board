@@ -273,7 +273,7 @@
         // localhost
         // const CONTRACT_ADDRESS = '0x345ca3e014aaf5dca488057592ee47305d9b3e10';
         // Rinkeby
-        const CONTRACT_ADDRESS = '0xb21b1416f324c7b07626b91d019febbd396678a0';
+        const CONTRACT_ADDRESS = '0xec82aeec355a0de337005335213557f8cf5ee53f';
         
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
