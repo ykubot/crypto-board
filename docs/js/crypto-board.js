@@ -3,18 +3,15 @@
   
         $('.button-collapse').sideNav();
 
-        // const PROVIDER_NETWORK = "http://localhost:9545";
+        const PROVIDER_NETWORK = "http://localhost:8545";
 
         // Rinkeby
-        const PROVIDER_NETWORK = "https://www.rinkeby.io/";
-        const ETHERSCAN_URL = "https://rinkeby.etherscan.io/tx/";
+        // const PROVIDER_NETWORK = "https://www.rinkeby.io/";
+        // const ETHERSCAN_URL = "https://rinkeby.etherscan.io/tx/";
 
         // Main net
-        // const ETHERSCAN_URL = "https://etherscan.io/";
+        const ETHERSCAN_URL = "https://etherscan.io/tx/";
 
-        $.getJSON('../../build/contracts/CryptoBoard.json', (data) => {
-            let artifact = data;
-        })
         const CONTRACT_ABI = [
             {
               "constant": true,
@@ -276,7 +273,9 @@
         // localhost
         // const CONTRACT_ADDRESS = '0x345ca3e014aaf5dca488057592ee47305d9b3e10';
         // Rinkeby
-        const CONTRACT_ADDRESS = '0xb21b1416f324c7b07626b91d019febbd396678a0';
+        // const CONTRACT_ADDRESS = '0xb21b1416f324c7b07626b91d019febbd396678a0';
+        // Mainnet
+        const CONTRACT_ADDRESS = '0xca30013b99cf01fe4d9c6f83b66bfa3800d842db';
         
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
