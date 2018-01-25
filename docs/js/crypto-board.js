@@ -346,9 +346,9 @@
                                 if (!err) {
                                     // console.log(messages_html);
                                     let message_html = '<div class="message-list">';
-                                    message_html += '<span id="post-user">' + web3.toAscii(res[1]).toString() + '</span>';
+                                    message_html += '<span id="post-user">' + res[1].toString() + '</span>';
                                     message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
-                                    message_html += '<p id="post-message">' + web3.toAscii(res[2]).toString() + '</p>';
+                                    message_html += '<p id="post-message">' + res[2].toString() + '</p>';
                                     message_html += '</div>'
                                     messages_html = message_html + messages_html;
                                     if (i === parseInt(result.c[0]) - 1) {
