@@ -1,6 +1,7 @@
 @import "./mixins";
 @import "./vars";
 @import "./font";
+@import "./color";
 
 /* Common */
 html {
@@ -8,13 +9,13 @@ html {
 }
 
 body {
-    background-color:#E0E9E7;
+    background-color: $base-background;
     // font-family: 'Raleway','Source Sans Pro', 'Arial';
     font-family: 'Hind Siliguri', sans-serif;
 }
 
 nav {
-    background-color: #961C3C;
+    background-color: $header-background;
 }
 
 a {
@@ -37,7 +38,7 @@ ul {
     margin: 10px; 
     li {
         padding: 5px 0 10px 0;
-        color: #4C4A48;
+        color: $text-dark;
         font-size: 16px;
     }
 }
@@ -47,7 +48,7 @@ ul {
 }
 
 nav .brand-logo {
-    color: #F8A723;
+    color: $logo;
     font-family: 'Baloo', cursive;
     @include max-screen($breakpoint-mobile) {
         left: 32%;
@@ -89,7 +90,7 @@ button {
 
 /* Header */
 #logo {
-    color: #F8A723;
+    color: $logo;
     font-family: 'Baloo', cursive;
     @include max-screen($breakpoint-mobile) {
         font-size: 35px;
@@ -97,22 +98,28 @@ button {
 }
 
 #tagline {
-    color: #F8A723;
+    color: $logo;
     @include max-screen($breakpoint-mobile) {
         font-size: 20px;
     }
 }
 
 #tagline-jp {
-    color: #FFFFFF;
+    color: $base-background;
     @include max-screen($breakpoint-mobile) {
         padding: 0 30px 0 30px;
     }
 }
 
 #index-banner {
-    background-color: #961C3C;
+    background-color: $header-background;
 } 
+
+#howto-button {
+    background-color: $logo;
+    color: $base-background;
+    margin: 30px 0 20px 0;
+}
 
 /* User Info */
 #no-send-message {
@@ -210,7 +217,7 @@ button {
 
 .message-list {
     padding: 10px;
-    border-bottom: solid 1px #F8A723;
+    border-bottom: solid 1px $logo;
 }
 
 /* Donation */
@@ -256,7 +263,7 @@ button {
 /* Footer */
 .page-footer {
     padding-top: 0;
-    background-color: #961C3C;
+    background-color: $header-background;
 }
 
 .footer-copyright {

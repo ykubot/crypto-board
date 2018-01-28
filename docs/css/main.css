@@ -82,13 +82,18 @@ button {
       font-size: 20px; } }
 
 #tagline-jp {
-  color: #FFFFFF; }
+  color: #E0E9E7; }
   @media screen and (max-width: 640px) {
     #tagline-jp {
       padding: 0 30px 0 30px; } }
 
 #index-banner {
   background-color: #961C3C; }
+
+#howto-button {
+  background-color: #F8A723;
+  color: #E0E9E7;
+  margin: 30px 0 20px 0; }
 
 /* User Info */
 #no-send-message {
