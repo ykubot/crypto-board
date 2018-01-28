@@ -27,11 +27,18 @@ h3 {
     }
 }
 
+h5 {
+    @include max-screen($breakpoint-mobile) {
+        font-size: 20px;
+    }
+}
+
 ul {
     margin: 10px; 
     li {
-        padding: 5px 0 5px 0;
+        padding: 5px 0 10px 0;
         color: #4C4A48;
+        font-size: 16px;
     }
 }
 
@@ -229,6 +236,21 @@ button {
 #ether-qr {
     width: 100px;
     height: 100px;
+}
+
+/* How to */
+.frame {
+    box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
+.how-to-step {
+    padding: 20px 0 20px 0;
+    .how-to-description {
+        padding: 5px 0 5px 0;
+    }
+    img {
+        width: 100%;
+    }
 }
 
 /* Footer */

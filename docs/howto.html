@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description" content="Decentralized Message Board on Ethereum">
+        <title>Crypto Board</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- <link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+
+    <body>
+        <nav class="" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="./index.html" class="brand-logo">Crypto Board</a>
+                <ul class="right hide-on-med-and-down">
+                <li><a href="./howto.html">How to</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav">
+                <li><a href="./howto.html">How to</a></li>
+                </ul>
+                <a href="./index.html" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="section">
+                <h3>How to use</h3>
+                <div class="how-to-step">
+                    <h5>1. Get Ether</h5>
+                    <div class="how-to-description">
+                        <ul>
+                            <li>まず暗号通貨であるEtherを販売所から購入します. </li>
+                            <li>国内だと<a href="https://coincheck.com/?c=PB5UhSCGZAg" target="_blank">Coincheck</a>, <a href="https://bitflyer.jp?bf=jtna4sxj" target="_blank">bitFlyer</a>, <a href="https://zaif.jp?ac=iqmvpb7a1s" target="_blank">Zaif</a>などから購入できます. </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="how-to-step">
+                    <h5>2. MetaMask Install</h5>
+                    <div class="how-to-description">
+                        <ul>
+                            <li>次にGoogle Chrome用のプラグインである<a href="https://metamask.io/">MetaMask</a>をインストールします. </li>
+                            <li>MetaMaskはEthereumを使った分散型アプリケーション(DApps)を簡単に使うことができるプラグインであり、現在開発されているDAppsはほとんどMetaMaskを使って動作する用に作られています. </li>
+                            <li>インストールが完了したら、アドレスを作成し購入したEtherをウォレットに送金します. </li>
+                            <li>これでDAppsを利用する準備が完了しました. </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="how-to-step">
+                    <h5>3. Send a message on CryptoBoard !</h5>
+                    <div class="how-to-description">
+                        <ul>
+                            <li>
+                                <p>Ethereumネットワークに正しく接続できていることを確認します. </p>
+                                <p>"Your Address Info"に接続しているウォレットのアドレスと残高が表示されていれば問題ありません. </p>
+                                <img id="howto-image" class="frame" src="image/01_address_info.png">
+                            </li>
+                            <li>
+                                <p>"Send a message"からニックネームとメッセージを入力し、送信します. </p>
+                                <img id="howto-image" class="frame" src="image/02_input_message.png">
+                            </li>
+                            <li>
+                                <p>MetaMaskの"CONFIRM TRANSACTION"が開くので、内容に問題がなければ"SUBMIT"で進みます. </p>
+                                <p>"REJECT"から取り消すことも出来ます.</p>
+                                <img id="howto-image" src="image/03_submit_on_metamask.png">
+                            </li>
+                            <li>
+                                <p>メッセージ投稿のトランザクションが発行されます.</p>
+                                <p>発行されたトランザクションは"Block hash"のIDから確認することが出来ます. </p>
+                                <img id="howto-image" class="frame" src="image/04_posted_message.png">
+                            </li>
+                            <li>
+                                <p>トランザクションIDのリンクを開くと、Ethereum上での承認状況が見れます.</p>
+                                <img id="howto-image" src="image/05_transaction_pending.png">
+                            </li>
+                            <li>
+                                <p>トランザクションが成功すると、ステータスが"Success"になります.</p>
+                                <p>承認時間はネットワークが混雑していなければ1分以内には承認されます.</p>
+                                <img id="howto-image" src="image/06_transaction_success.png">
+                            </li>
+                            <li>
+                                <p>サイトを更新すると投稿されたメッセージを確認することが出来ます.</p>
+                                <p>一度投稿されたメッセージは例え本サイトが閉じられたとしても未来永劫存在し続けます.</p>
+                                <img id="howto-image" class="frame" src="image/07_timeline.png">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container">
+                    Made by <a class="text-lighten-3" href="https://twitter.com/ykubot1">@ykubot1</a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- <script type="text/javascript" src="../node_modules/materialize-css/dist/js/materialize.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/crypto-board.js"></script>
+        <!-- <script src="../node_modules/web3/dist/web3.min.js"></script> -->
+        <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+    </body>
+</html>
