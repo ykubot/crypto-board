@@ -46,6 +46,9 @@ nav .brand-logo {
 
 nav ul a {
   font-size: 1.2rem; }
+  nav ul a .twitter-icon {
+    font-size: 1.5rem;
+    color: #55acee; }
 
 .section {
   padding-top: 2rem;
