@@ -283,30 +283,87 @@
             web3 = new Web3(new Web3.providers.HttpProvider(PROVIDER_NETWORK));
         }
 
-        if (web3.isConnected()) {
-            web3.eth.defaultAccount = web3.eth.accounts[0];
-
-            if (web3.eth.defaultAccount) {
-                $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
-                web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
-                    if (!error) {
-                        console.log(result);
-                        let ether_balance = web3.fromWei(result).toNumber();
-                        $("#myBalance").html('Balance: ' + ether_balance + ' ether');
-                    } else {
-                        console.error(error);
+        web3.version.getNetwork((err, netId) => {
+            switch (netId) {
+                case "1":
+                    console.log('This is mainnet');
+                    if (web3.isConnected()) {
+                        web3.eth.defaultAccount = web3.eth.accounts[0];
+            
+                        if (web3.eth.defaultAccount) {
+                            $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
+                            web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
+                                if (!error) {
+                                    console.log(result);
+                                    let ether_balance = web3.fromWei(result).toNumber();
+                                    $("#myBalance").html('Balance: ' + ether_balance + ' ether');
+                                } else {
+                                    console.error(error);
+                                }
+                            });
+                        } else {
+                            $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
+                            $(".address-area").css("display", "none");
+                            $("#button").addClass('disabled');
+                        }
                     }
-                });
-            } else {
-                $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
-                $(".address-area").css("display", "none");
-                $("#button").addClass('disabled');
+                case "2":
+                    console.log('This is the deprecated Morden test network.');
+                    $("#no-send-message").html('This is the deprecated Morden test network.');
+                    $(".address-area").css("display", "none");
+                    $("#button").addClass('disabled');
+                    break;
+                case "3":
+                    console.log('This is the Ropsten test network.');
+                    $("#no-send-message").html('This is the Ropsten test network.');
+                    $(".address-area").css("display", "none");
+                    $("#button").addClass('disabled');
+                    break;
+                case "4":
+                    console.log('This is the Rinkeby test network.');
+                    $("#no-send-message").html('This is the Rinkeby test network.');
+                    $(".address-area").css("display", "none");
+                    $("#button").addClass('disabled');
+                    break;
+                case "42":
+                    console.log('This is the Kovan test network.');
+                    $("#no-send-message").html('This is the Kovan test network.');
+                    $(".address-area").css("display", "none");
+                    $("#button").addClass('disabled');
+                    break;
+                default:
+                    console.log('This is an unknown network.');
+                    $("#no-send-message").html('This is an unknown network. ');
+                    $(".address-area").css("display", "none");
+                    $("#button").addClass('disabled');
+                    break;
             }
-        } else {
-            $("#no-send-message").html('No connection to Main Ethereum Network. ');
-            $(".address-area").css("display", "none");
-            $("#button").addClass('disabled');
-        }
+        });
+
+        // if (web3.isConnected()) {
+        //     web3.eth.defaultAccount = web3.eth.accounts[0];
+
+        //     if (web3.eth.defaultAccount) {
+        //         $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
+        //         web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
+        //             if (!error) {
+        //                 console.log(result);
+        //                 let ether_balance = web3.fromWei(result).toNumber();
+        //                 $("#myBalance").html('Balance: ' + ether_balance + ' ether');
+        //             } else {
+        //                 console.error(error);
+        //             }
+        //         });
+        //     } else {
+        //         $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
+        //         $(".address-area").css("display", "none");
+        //         $("#button").addClass('disabled');
+        //     }
+        // } else {
+        //     $("#no-send-message").html('No connection to Main Ethereum Network. ');
+        //     $(".address-area").css("display", "none");
+        //     $("#button").addClass('disabled');
+        // }
         
         let cryptoboardContract = web3.eth.contract(CONTRACT_ABI);        
         let Cryptoboard = cryptoboardContract.at(CONTRACT_ADDRESS);
