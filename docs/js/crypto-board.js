@@ -307,6 +307,7 @@
                             $("#button").addClass('disabled');
                         }
                     }
+                    break;
                 case "2":
                     console.log('This is the deprecated Morden test network.');
                     $("#no-send-message").html('This is the deprecated Morden test network.');
