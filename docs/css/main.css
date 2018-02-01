@@ -92,7 +92,8 @@ button {
 
 #howto-button {
   background-color: #F8A723;
-  color: #E0E9E7;
+  color: #263238;
+  font-weight: bold;
   margin: 30px 0 20px 0; }
 
 /* User Info */
