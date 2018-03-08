@@ -399,20 +399,23 @@
                     if (parseInt(result.c) > 0) {
                         $("#messageCount").html(result.c + ' messages'); 
                         for (let i=0; i < parseInt(result.c[0]); i++) {
-                            Cryptoboard.getMessage(i, (err, res) => {
-                                if (!err) {
-                                    // console.log(messages_html);
-                                    let message_html = '<div class="message-list">';
-                                    message_html += '<span id="post-user">' + res[1].toString() + '</span>';
-                                    message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
-                                    message_html += '<p id="post-message">' + res[2].toString() + '</p>';
-                                    message_html += '</div>'
-                                    messages_html = message_html + messages_html;
-                                    if (i === parseInt(result.c[0]) - 1) {
-                                        $("#messages").html(messages_html);
-                                    }
-                                }
-                            });
+                            setTimeout(() => {
+                                Cryptoboard.getMessage(i, (err, res) => {
+                                  if (!err) {
+                                      // console.log(messages_html);
+                                      let message_html = '<div class="message-list">';
+                                      message_html += '<span id="post-user">' + res[1].toString() + '</span>';
+                                      message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
+                                      message_html += '<p id="post-message">' + res[2].toString() + '</p>';
+                                      message_html += '</div>'
+                                      messages_html = message_html + messages_html;
+                                      if (i === parseInt(result.c[0]) - 1) {
+                                          $("#messages").html(messages_html);
+                                          $("#message-loader").hide();
+                                      }
+                                  }
+                                });
+                            }, 500);
                         }
                         // console.log(messages_html);
                     } else {
