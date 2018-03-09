@@ -1,6 +1,6 @@
 (function($){
     $(function(){
-  
+
         $('.button-collapse').sideNav();
 
         const PROVIDER_NETWORK = "http://localhost:8545";
@@ -269,14 +269,14 @@
               "type": "event"
             }
         ];
-        
+
         // localhost
         // const CONTRACT_ADDRESS = '0x345ca3e014aaf5dca488057592ee47305d9b3e10';
         // Rinkeby
         // const CONTRACT_ADDRESS = '0xb21b1416f324c7b07626b91d019febbd396678a0';
         // Mainnet
         const CONTRACT_ADDRESS = '0xca30013b99cf01fe4d9c6f83b66bfa3800d842db';
-        
+
         if (typeof web3 !== 'undefined') {
             web3 = new Web3(web3.currentProvider);
         } else {
@@ -289,7 +289,7 @@
                     console.log('This is mainnet');
                     if (web3.isConnected()) {
                         web3.eth.defaultAccount = web3.eth.accounts[0];
-            
+
                         if (web3.eth.defaultAccount) {
                             $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
                             web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
@@ -365,19 +365,19 @@
         //     $(".address-area").css("display", "none");
         //     $("#button").addClass('disabled');
         // }
-        
-        let cryptoboardContract = web3.eth.contract(CONTRACT_ABI);        
+
+        let cryptoboardContract = web3.eth.contract(CONTRACT_ABI);
         let Cryptoboard = cryptoboardContract.at(CONTRACT_ADDRESS);
 
         // メッセージ更新イベントを定義
         let cryptoboardEvent = Cryptoboard.MessageInfo({}, 'latest');
-        
+
         // メッセージ更新イベントを監視(Metamaskだと動かない)
         cryptoboardEvent.watch((err, result) => {
             if (!err) {
-                // if (result.blockHash != $("#insTrans").html()) 
+                // if (result.blockHash != $("#insTrans").html())
                 //     $("#loader").hide();
-                    
+
                 // console.log(result);
                 // let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
                 // $("#insTrans").html(block_hash_html);
@@ -390,14 +390,14 @@
                 $("#loader").hide();
             }
         });
-        
+
         // メッセージリストを取得
         let get_messages = () => {
             Cryptoboard.getMessageCount((error, result) => {
                 let messages_html = '';
                 if (result) {
                     if (parseInt(result.c) > 0) {
-                        $("#messageCount").html(result.c + ' messages'); 
+                        $("#messageCount").html(result.c + ' messages');
                         for (let i=0; i < parseInt(result.c[0]); i++) {
                             setTimeout(() => {
                                 Cryptoboard.getMessage(i, (err, res) => {
@@ -415,21 +415,21 @@
                                       }
                                   }
                                 });
-                            }, 500);
+                            }, 800);
                         }
                         // console.log(messages_html);
                     } else {
-                        $("#messageCount").html('0 messages'); 
+                        $("#messageCount").html('0 messages');
                         $("#messages").html("No message.");
                     }
                 }
             });
         }
-        
+
         // メッセージ投稿
         $("#button").click(function() {
             $("#loader").show();
-        
+
             Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas: 210000}, (err, res) => {
                 console.log(res);
                 if (err) {
@@ -446,7 +446,7 @@
                 $(".posted-message-area").css("display", "block");
             });
         });
-        
+
         get_messages();
 
         let convertUnixtimeToDate = (timestamp) => {
@@ -460,6 +460,6 @@
             let result = year + '/' + month + '/' + day + ' ' + hour + ':' + min + ':' + sec;
             return result;
         }
-        
+
     }); // end of document ready
 })(jQuery); // end of jQuery name space
