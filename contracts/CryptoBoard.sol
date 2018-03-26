@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract CryptoBoard is Ownable {
-    
+
     struct Message {
         address writerAddress;
         string nickName;
@@ -10,14 +10,14 @@ contract CryptoBoard is Ownable {
         bytes32 topic;
         uint256 postTime;
     }
-    
+
     address[] public writerAccounts;
     Message[] public messages;
-    
+
     function CryptoBoard() public {
         owner = msg.sender;
     }
-    
+
     event MessageInfo(
         address writerAddress,
         string nickName,
@@ -25,22 +25,14 @@ contract CryptoBoard is Ownable {
         bytes32 topic,
         uint256 postTime
     );
-    
+
     function postMessage(string _nickName, string _message, bytes32 _topic) public {
-        
-        messages.push(Message({
-            writerAddress: msg.sender,
-            nickName: _nickName,
-            message: _message,
-            topic: _topic,
-            postTime: now
-        }));
-        
+
+        messages.push(Message(msg.sender, _nickName, _message, _topic, now));
         writerAccounts.push(msg.sender);
-        
         MessageInfo(msg.sender, _nickName, _message, _topic, now);
     }
-    
+
     function getWriterAccounts() view public returns (address[]) {
         return writerAccounts;
     }
@@ -60,5 +52,5 @@ contract CryptoBoard is Ownable {
     function getMessageCount() view public returns (uint) {
         return messages.length;
     }
-        
+
 }
