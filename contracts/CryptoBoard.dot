@@ -1,0 +1,14 @@
+strict digraph {
+  CryptoBoard
+  postMessage
+  push
+  MessageInfo
+  getWriterAccounts
+  getWriterAccount
+  getWriterCount
+  getMessage
+  getMessageCount
+  postMessage -> push
+  postMessage -> MessageInfo
+}
+
