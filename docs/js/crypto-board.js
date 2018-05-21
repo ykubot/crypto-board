@@ -283,19 +283,19 @@
             web3 = new Web3(new Web3.providers.HttpProvider(PROVIDER_NETWORK));
         }
 
-        web3.version.getNetwork((err, netId) => {
+        web3.eth.net.getId()
+        .then((netId) => {
             switch (netId) {
-                case "1":
+                case 1:
                     console.log('This is mainnet');
-                    if (web3.isConnected()) {
-                        web3.eth.defaultAccount = web3.eth.accounts[0];
-
-                        if (web3.eth.defaultAccount) {
-                            $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
-                            web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
+                    web3.eth.getAccounts()
+                    .then((accounts) => {
+                        let defaultAccount = accounts[0];
+                        if (defaultAccount) {
+                            $("#myAddress").html('Your Address: ' + defaultAccount);
+                            web3.eth.getBalance(defaultAccount, function (error, result) {
                                 if (!error) {
-                                    console.log(result);
-                                    let ether_balance = web3.fromWei(result).toNumber();
+                                    let ether_balance = web3.utils.fromWei(result);
                                     $("#myBalance").html('Balance: ' + ether_balance + ' ether');
                                 } else {
                                     console.error(error);
@@ -306,27 +306,46 @@
                             $(".address-area").css("display", "none");
                             $("#button").addClass('disabled');
                         }
-                    }
+
+                    });
                     break;
-                case "2":
+                case 2:
                     console.log('This is the deprecated Morden test network.');
                     $("#no-send-message").html('This is the deprecated Morden test network.');
                     $(".address-area").css("display", "none");
                     $("#button").addClass('disabled');
                     break;
-                case "3":
+                case 3:
                     console.log('This is the Ropsten test network.');
                     $("#no-send-message").html('This is the Ropsten test network.');
                     $(".address-area").css("display", "none");
                     $("#button").addClass('disabled');
                     break;
-                case "4":
+                case 4:
                     console.log('This is the Rinkeby test network.');
                     $("#no-send-message").html('This is the Rinkeby test network.');
-                    $(".address-area").css("display", "none");
-                    $("#button").addClass('disabled');
+                    web3.eth.getAccounts()
+                    .then((accounts) => {
+                        console.log(accounts[0]);
+                        let defaultAccount = accounts[0];
+                        if (defaultAccount) {
+                            $("#myAddress").html('Your Address: ' + defaultAccount);
+                            web3.eth.getBalance(defaultAccount, function (error, result) {
+                                if (!error) {
+                                    let ether_balance = web3.utils.fromWei(result);
+                                    $("#myBalance").html('Balance: ' + ether_balance + ' ether');
+                                } else {
+                                    console.error(error);
+                                }
+                            });
+                        } else {
+                            $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
+                            $(".address-area").css("display", "none");
+                            $("#button").addClass('disabled');
+                        }
+                    });
                     break;
-                case "42":
+                case 42:
                     console.log('This is the Kovan test network.');
                     $("#no-send-message").html('This is the Kovan test network.');
                     $(".address-area").css("display", "none");
@@ -341,102 +360,89 @@
             }
         });
 
-        // if (web3.isConnected()) {
-        //     web3.eth.defaultAccount = web3.eth.accounts[0];
-
-        //     if (web3.eth.defaultAccount) {
-        //         $("#myAddress").html('Your Address: ' + web3.eth.accounts[0]);
-        //         web3.eth.getBalance(web3.eth.defaultAccount, function (error, result) {
-        //             if (!error) {
-        //                 console.log(result);
-        //                 let ether_balance = web3.fromWei(result).toNumber();
-        //                 $("#myBalance").html('Balance: ' + ether_balance + ' ether');
-        //             } else {
-        //                 console.error(error);
-        //             }
-        //         });
-        //     } else {
-        //         $("#no-send-message").html('Your address is disable. <br>Please unlock Metamask. ');
-        //         $(".address-area").css("display", "none");
-        //         $("#button").addClass('disabled');
-        //     }
-        // } else {
-        //     $("#no-send-message").html('No connection to Main Ethereum Network. ');
-        //     $(".address-area").css("display", "none");
-        //     $("#button").addClass('disabled');
-        // }
-
-        let cryptoboardContract = web3.eth.contract(CONTRACT_ABI);
-        let Cryptoboard = cryptoboardContract.at(CONTRACT_ADDRESS);
+        let Cryptoboard = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
         // メッセージ更新イベントを定義
-        let cryptoboardEvent = Cryptoboard.MessageInfo({}, 'latest');
-
-        // メッセージ更新イベントを監視(Metamaskだと動かない)
-        cryptoboardEvent.watch((err, result) => {
-            if (!err) {
-                // if (result.blockHash != $("#insTrans").html())
-                //     $("#loader").hide();
-
-                // console.log(result);
-                // let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
-                // $("#insTrans").html(block_hash_html);
-                // // If byte32, use web3.toAscii
-                // $("#post-user").html(result.args.nickName);
-                // $("#post-time").html(convertUnixtimeToDate(result.args.postTime.c[0]));
-                // $("#post-message").html(result.args.message);
-                get_messages();
-            } else {
-                $("#loader").hide();
-            }
-        });
+        // let cryptoboardEvent = Cryptoboard.MessageInfo({}, 'latest');
+        //
+        // // メッセージ更新イベントを監視(Metamaskだと動かない)
+        // cryptoboardEvent.watch((err, result) => {
+        //     if (!err) {
+        //         // if (result.blockHash != $("#insTrans").html())
+        //         //     $("#loader").hide();
+        //
+        //         // console.log(result);
+        //         // let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
+        //         // $("#insTrans").html(block_hash_html);
+        //         // // If byte32, use web3.toAscii
+        //         // $("#post-user").html(result.args.nickName);
+        //         // $("#post-time").html(convertUnixtimeToDate(result.args.postTime.c[0]));
+        //         // $("#post-message").html(result.args.message);
+        //         get_messages();
+        //     } else {
+        //         $("#loader").hide();
+        //     }
+        // });
 
         // メッセージリストを取得
-        let get_messages = () => {
-            Cryptoboard.getMessageCount((error, result) => {
-                let messages_html = '';
-                if (result) {
-                    if (parseInt(result.c) > 0) {
-                        $("#messageCount").html(result.c + ' messages');
-                        for (let i=0; i < parseInt(result.c[0]); i++) {
-                            setTimeout(() => {
-                                Cryptoboard.getMessage(i, (err, res) => {
-                                  if (!err) {
-                                      // console.log(messages_html);
-                                      let message_html = '<div class="message-list">';
-                                      message_html += '<span id="post-user">' + res[1].toString() + '</span>';
-                                      message_html += '<span id="post-time">' + convertUnixtimeToDate(res[4]).toString() + '</span>';
-                                      message_html += '<p id="post-message">' + res[2].toString() + '</p>';
-                                      message_html += '</div>'
-                                      messages_html = message_html + messages_html;
-                                      if (i === parseInt(result.c[0]) - 1) {
-                                          $("#messages").html(messages_html);
-                                          $("#message-loader").hide();
-                                      }
-                                  }
-                                });
-                            }, 800);
+        async function get_messages() {
+            let count = await get_message_count();
+            let messages_html = '';
+            // console.log(count);
+            if(count > 0) {
+                $("#messageCount").html(count + ' messages');
+                for (let i = 0; i < count; i++) {
+                    result = await get_message(i);
+                    if (result) {
+                        // console.log(result);
+                        let message_html = '<div class="message-list">';
+                        message_html += '<span id="post-user">' + result[1].toString() + '</span>';
+                        message_html += '<span id="post-time">' + convertUnixtimeToDate(result[4]).toString() + '</span>';
+                        message_html += '<p id="post-message">' + result[2].toString() + '</p>';
+                        message_html += '</div>'
+                        messages_html = message_html + messages_html;
+                        if (i === count - 1) {
+                            $("#messages").html(messages_html);
+                            $("#message-loader").hide();
                         }
-                        // console.log(messages_html);
-                    } else {
-                        $("#messageCount").html('0 messages');
-                        $("#messages").html("No message.");
                     }
                 }
+            }
+        }
+
+        function get_accounts() {
+            return web3.eth.getAccounts();
+        }
+
+        function get_message_count() {
+            return Cryptoboard.methods.getMessageCount().call();
+        }
+
+        function get_message(id) {
+            return Cryptoboard.methods.getMessage(id).call();
+        }
+
+        async function post_message(from, name, message, category) {
+            return Cryptoboard.methods.postMessage(name, message, web3.utils.asciiToHex(category))
+            .send({from: from, gas: 210000})
+            .on("receipt", function(receipt) {
+                console.log(receipt);
+            })
+            .on("error", function(error) {
+                $("#loader").hide();
+                console.log(error);
             });
         }
 
         // メッセージ投稿
-        $("#button").click(function() {
+        $("#button").click(async function() {
             $("#loader").show();
+            let accounts = await get_accounts();
 
-            Cryptoboard.postMessage($("#name").val(), $("#message").val(), 'main', {from: web3.eth.defaultAccount, gas: 210000}, (err, res) => {
-                console.log(res);
-                if (err) {
-                    console.log(err);
-                    $("#loader").hide();
-                }
-                let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + res + '">' + res + '</a>';
+            let result = await post_message(accounts[0], $("#name").val(), $("#message").val(), 'main');
+            // console.log(result);
+            if (result) {
+                let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
                 $("#insTrans").html(block_hash_html);
                 $("#post-user").html($("#name").val());
                 $("#post-message").html($("#message").val());
@@ -444,7 +450,7 @@
                 $("#name").val('');
                 $("#message").val('');
                 $(".posted-message-area").css("display", "block");
-            });
+            }
         });
 
         get_messages();
