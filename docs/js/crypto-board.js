@@ -362,28 +362,6 @@
 
         let Cryptoboard = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
-        // メッセージ更新イベントを定義
-        // let cryptoboardEvent = Cryptoboard.MessageInfo({}, 'latest');
-        //
-        // // メッセージ更新イベントを監視(Metamaskだと動かない)
-        // cryptoboardEvent.watch((err, result) => {
-        //     if (!err) {
-        //         // if (result.blockHash != $("#insTrans").html())
-        //         //     $("#loader").hide();
-        //
-        //         // console.log(result);
-        //         // let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
-        //         // $("#insTrans").html(block_hash_html);
-        //         // // If byte32, use web3.toAscii
-        //         // $("#post-user").html(result.args.nickName);
-        //         // $("#post-time").html(convertUnixtimeToDate(result.args.postTime.c[0]));
-        //         // $("#post-message").html(result.args.message);
-        //         get_messages();
-        //     } else {
-        //         $("#loader").hide();
-        //     }
-        // });
-
         // メッセージリストを取得
         async function get_messages() {
             let count = await get_message_count();
@@ -440,9 +418,9 @@
             let accounts = await get_accounts();
 
             let result = await post_message(accounts[0], $("#name").val(), $("#message").val(), 'main');
-            // console.log(result);
+            console.log(result);
             if (result) {
-                let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.blockHash + '">' + result.blockHash + '</a>';
+                let block_hash_html = 'Block hash: <a href="' + ETHERSCAN_URL + result.transactionHash + '">' + result.transactionHash + '</a>';
                 $("#insTrans").html(block_hash_html);
                 $("#post-user").html($("#name").val());
                 $("#post-message").html($("#message").val());
@@ -453,7 +431,7 @@
             }
         });
 
-        get_messages();
+        setInterval(() => get_messages(), 500);
 
         let convertUnixtimeToDate = (timestamp) => {
             var d = new Date( timestamp * 1000 );
